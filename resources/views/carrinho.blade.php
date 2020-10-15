@@ -14,7 +14,13 @@
                        <li>{{ $item['produto'] }} - {{$item['quantidade']}} - {{$item['preco']}} <a href="{{ route('remover', ['produto_id' => $k]) }}">Remover</a></li>
                     @endforeach
                     </ul>
-                    
+
+                    @can('create', \App\Models\Venda::class)
+                        <a href="{{ route('finalizar') }}">Fechar Compra</a>
+                    @else
+                        <a href="{{ route('login') }}">Login</a>
+                    @endcan
+
                 </div>
             </div>
         </div>

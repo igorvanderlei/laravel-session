@@ -37,4 +37,11 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    public function redirectTo() {
+        if(\Auth::user()->tipo == 'cliente')
+            return '/carrinho';
+        else
+            return '/vendas';
+    }
 }
